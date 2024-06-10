@@ -47,17 +47,6 @@
             android:textColor="#1e3e7e"
             android:textSize="35sp" />
 
-        <EditText
-            android:id="@+id/user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/input_background"
-            android:fontFamily="@font/alfa_slab_one"
-            android:hint="@string/name_hint"
-            android:inputType="textPersonName"
-            android:padding="15dp"
-            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/email"

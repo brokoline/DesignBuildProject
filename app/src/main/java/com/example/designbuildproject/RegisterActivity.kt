@@ -25,7 +25,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val userInput = findViewById<EditText>(R.id.user)
+
         val emailInput = findViewById<EditText>(R.id.email)
         val passInput = findViewById<EditText>(R.id.pass)
         val confirmPassInput = findViewById<EditText>(R.id.confirmPass)
@@ -33,14 +33,13 @@ class RegisterActivity : AppCompatActivity() {
         val backToLogin = findViewById<TextView>(R.id.backToLogin) // Make sure this matches the id in XML
 
         registerButton.setOnClickListener {
-            val user = userInput.text.toString()
             val email = emailInput.text.toString()
             val pass = passInput.text.toString()
             val confirmPass = confirmPassInput.text.toString()
 
-            if (user.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
+            if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
                 if (pass == confirmPass) {
-                    addUser(user, email, pass)
+                    addUser(email, pass)
                 } else {
                     Toast.makeText(this, "Kodeordene matcher ikke. Prøv igen.", Toast.LENGTH_SHORT).show()
                 }
@@ -54,10 +53,9 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun addUser(user: String, email: String, pass: String) {
+    private fun addUser(email: String, pass: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val json = JSONObject().apply {
-                put("name", user)
                 put("email", email)
                 put("pass", pass)
             }

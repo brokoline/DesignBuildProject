@@ -7,8 +7,7 @@
     <string name="login">Log Ind</string>
     <string name="register">Opret bruger</string>
     <string name="register_new_user">Opret en ny bruger</string>
-    <string name="name_hint">Navn</string>
-    <string name="email_hint">Email</string>
+    <string name="email_hint">E-mail</string>
     <string name="password_hint">Adgangskode</string>
     <string name="confirm_password_hint">Bekræft adgangskode</string>
     <string name="register_button">Opret bruger</string>
