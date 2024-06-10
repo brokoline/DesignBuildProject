@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/epi_logger"
-        android:textSize="56sp"
+        android:textSize="66sp"
         android:textColor="#1e3e7e"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/alfa_slab_one"
@@ -28,7 +28,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@drawable/login_container_background"
         android:elevation="10dp"
         android:orientation="vertical"
         android:padding="16dp"
@@ -46,7 +45,7 @@
             android:fontFamily="@font/alfa_slab_one"
             android:text="@string/register_new_user"
             android:textColor="#1e3e7e"
-            android:textSize="24sp" />
+            android:textSize="35sp" />
 
         <EditText
             android:id="@+id/user"
@@ -57,7 +56,8 @@
             android:fontFamily="@font/alfa_slab_one"
             android:hint="@string/name_hint"
             android:inputType="textPersonName"
-            android:padding="15dp" />
+            android:padding="15dp"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/email"
@@ -69,7 +69,8 @@
             android:fontFamily="@font/alfa_slab_one"
             android:hint="@string/email_hint"
             android:inputType="textEmailAddress"
-            android:padding="15dp" />
+            android:padding="15dp"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/pass"
@@ -81,7 +82,8 @@
             android:fontFamily="@font/alfa_slab_one"
             android:hint="@string/password_hint"
             android:inputType="textPassword"
-            android:padding="15dp" />
+            android:padding="15dp"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/confirmPass"
@@ -93,7 +95,8 @@
             android:fontFamily="@font/alfa_slab_one"
             android:hint="@string/confirm_password_hint"
             android:inputType="textPassword"
-            android:padding="15dp" />
+            android:padding="15dp"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/registerButton"
@@ -109,21 +112,21 @@
             android:paddingBottom="5dp"
             android:text="@string/register_button"
             android:textColor="#ffffff"
-            android:textSize="17sp" />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/backToLogin"
-            android:layout_width="225dp"
-            android:layout_height="58dp"
+            android:layout_width="wrap_content"
+            android:layout_height="63dp"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/alfa_slab_one"
-            android:padding="5dp"
+            android:padding="2dp"
             android:text="@string/back_to_login"
             android:textColor="#2b4a84"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

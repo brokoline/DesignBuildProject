@@ -16,9 +16,9 @@
     <string name="upload_header">Upload billeder til EpiLog</string>
     <string name="epiLogger_header">EpiLogger</string>
     <string name="history_title">EpiHistorik</string>
-    <string name="history_subtitle">Hent personlig historik her</string>
+    <string name="history_subtitle">Hent personlig historik</string>
     <string name="start_date_label">Start Dato:</string>
     <string name="end_date_label">Slut Dato:</string>
     <string name="fetch_logs_button">Hent Epihistorik</string>
-    <string name="back_to_dashboard">Gå tilbage til hovedmenu</string>
+    <string name="back_to_dashboard">Hovedmenu</string>
 </resources>
