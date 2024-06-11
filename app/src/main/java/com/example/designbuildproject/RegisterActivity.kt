@@ -1,12 +1,17 @@
 package com.example.designbuildproject
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,11 +25,12 @@ import org.json.JSONObject
 class RegisterActivity : AppCompatActivity() {
 
     private val client = OkHttpClient()
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-
+        auth = Firebase.auth
 
         val emailInput = findViewById<EditText>(R.id.email)
         val passInput = findViewById<EditText>(R.id.pass)
@@ -38,45 +44,43 @@ class RegisterActivity : AppCompatActivity() {
             val confirmPass = confirmPassInput.text.toString()
 
             if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
-                if (pass == confirmPass) {
-                    addUser(email, pass)
-                } else {
-                    Toast.makeText(this, "Kodeordene matcher ikke. Prøv igen.", Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                Toast.makeText(this, "Udfyld venligst alle felter.", Toast.LENGTH_SHORT).show()
-            }
+
+                auth.createUserWithEmailAndPassword(email, pass)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(ContentValues.TAG, "createUserWithEmail:success")
+                            Toast.makeText(
+                                baseContext,
+                                "Registration complete, please sign in.",
+                                Toast.LENGTH_SHORT,
+                            ).show()
+                            val user = auth.currentUser
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
+                            Toast.makeText(
+                                baseContext,
+                                "Registration failed, user already exists or password is too short.",
+                                Toast.LENGTH_SHORT,
+                            ).show()
+
+                        }
+                    }
+
         }
 
+
+
+        }
         backToLogin.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java)) // Add this line to handle click event
         }
     }
 
-    private fun addUser(email: String, pass: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val json = JSONObject().apply {
-                put("email", email)
-                put("pass", pass)
-            }
-
-            val requestBody = json.toString().toRequestBody("application/json".toMediaTypeOrNull())
-
-            val request = Request.Builder()
-                .url("http://yourapiendpoint.com/api/user") // API endpoint
-                .post(requestBody)
-                .build()
-
-            val response = client.newCall(request).execute()
-
-            withContext(Dispatchers.Main) {
-                if (response.isSuccessful) {
-                    Toast.makeText(this@RegisterActivity, "Bruger oprettet med succes", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
-                } else {
-                    Toast.makeText(this@RegisterActivity, "Der opstod en fejl ved oprettelse af brugeren.", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
     }
-}
+
+
