@@ -1,5 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.designbuildproject">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -8,16 +13,47 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DesignBuildProject">
-
-
-        <activity android:name=".DashboardActivity" android:exported="true"></activity>
-        <activity android:name=".RegisterActivity" android:exported="true"></activity>
-        <activity android:name=".UploadActivity" android:exported="true"></activity>
-        <activity android:name=".HistoryActivity" android:exported="true"></activity>
-        <activity android:name=".MessageActivity" android:exported="true"></activity>
-        <activity android:name=".MainActivity" android:exported="true">
+        <activity
+            android:name=".UploadAdapter"
+            android:exported="false"
+            android:label="@string/title_activity_upload_adapter"
+            android:theme="@style/Theme.DesignBuildProject" />
+        <activity
+            android:name=".ImageAdapter"
+            android:exported="false"
+            android:label="@string/title_activity_image_adapter"
+            android:theme="@style/Theme.DesignBuildProject" />
+        <activity
+            android:name=".ui.theme.imageAdapter"
+            android:exported="false"
+            android:label="@string/title_activity_image_adapter"
+            android:theme="@style/Theme.DesignBuildProject" />
+        <activity
+            android:name=".ImageData"
+            android:exported="false"
+            android:label="@string/title_activity_image_data"
+            android:theme="@style/Theme.DesignBuildProject" />
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UploadActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MessageActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -20,4 +20,7 @@
     <string name="end_date_label">Slut Dato:</string>
     <string name="fetch_logs_button">Hent Epihistorik</string>
     <string name="back_to_dashboard">Hovedmenu</string>
+    <string name="title_activity_image_data">ImageData</string>
+    <string name="title_activity_image_adapter">imageAdapter</string>
+    <string name="title_activity_upload_adapter">UploadAdapter</string>
 </resources>
