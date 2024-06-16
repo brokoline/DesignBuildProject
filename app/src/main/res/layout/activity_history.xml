@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/button_background"
+            android:backgroundTint="#1e3e7e"
             android:fontFamily="@font/alfa_slab_one"
             android:padding="10dp"
             android:text="@string/fetch_logs_button"

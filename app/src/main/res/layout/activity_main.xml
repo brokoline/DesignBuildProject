@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/alfa_slab_one"
-            android:text="Velkommen"
+            android:text="Welcome"
             android:textColor="#1e3e7e"
             android:textSize="44sp" />
 
@@ -60,7 +60,7 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/input_background"
             android:fontFamily="@font/alfa_slab_one"
-            android:hint="Adgangskode"
+            android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp"
             android:textSize="29sp" />
@@ -70,9 +70,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/button_background"
+            android:backgroundTint="#1e3e7e"
             android:fontFamily="@font/alfa_slab_one"
-            android:text="Log Ind"
+            android:text="Log In"
             android:textColor="#ffffff"
             android:textSize="29sp"
             android:transitionName="button_background" />
@@ -86,7 +86,7 @@
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/alfa_slab_one"
-            android:text="Opret bruger"
+            android:text="Create user"
             android:textColor="#2b4a84"
             android:textSize="30sp" />
     </LinearLayout>

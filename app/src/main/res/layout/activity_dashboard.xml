@@ -43,7 +43,7 @@
             android:layout_height="101dp"
             android:layout_gravity="center"
             android:fontFamily="@font/alfa_slab_one"
-            android:text="Din EpiOversigt"
+            android:text="EpiOverview"
             android:textColor="#1e3e7e"
             android:textSize="39sp" />
 
@@ -53,10 +53,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/button_background"
+            android:backgroundTint="#1e3e7e"
             android:fontFamily="@font/alfa_slab_one"
             android:padding="16dp"
-            android:text="Upload et billede"
+            android:text="Upload a picture"
             android:textColor="#ffffff"
             android:textSize="29sp"
             android:textStyle="bold" />
@@ -67,10 +67,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/button_background"
+            android:backgroundTint="#1e3e7e"
             android:fontFamily="@font/alfa_slab_one"
             android:padding="16dp"
-            android:text="Historik"
+            android:text="History"
             android:textColor="#ffffff"
             android:textSize="29sp"
             android:textStyle="bold" />
@@ -81,10 +81,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/button_background"
+            android:backgroundTint="#1e3e7e"
             android:fontFamily="@font/alfa_slab_one"
             android:padding="16dp"
-            android:text="Send besked"
+            android:text="Send a message"
             android:textColor="#ffffff"
             android:textStyle="bold"
             android:textSize="29sp"/> />
@@ -99,7 +99,7 @@
             android:focusable="true"
             android:fontFamily="@font/alfa_slab_one"
             android:padding="5dp"
-            android:text="Log ud"
+            android:text="Log out"
             android:textColor="#2b4a84"
             android:textSize="30sp" />
 

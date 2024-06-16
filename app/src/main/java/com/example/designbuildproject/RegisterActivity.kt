@@ -41,10 +41,10 @@ class RegisterActivity : AppCompatActivity() {
                 if (pass == confirmPass) {
                     addUser(email, pass)
                 } else {
-                    Toast.makeText(this, "Kodeordene matcher ikke. Prøv igen.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Kodeordene matcher ikke. Prøv igen.", Toast.LENGTH_LONG).show()
                 }
             } else {
-                Toast.makeText(this, "Udfyld venligst alle felter.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Udfyld venligst alle felter.", Toast.LENGTH_LONG).show()
             }
         }
 

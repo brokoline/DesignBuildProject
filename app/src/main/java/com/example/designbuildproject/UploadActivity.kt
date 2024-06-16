@@ -69,7 +69,7 @@ class UploadActivity : AppCompatActivity() {
             .build()
 
         val request = Request.Builder()
-            .url("http://yourapiendpoint.com/api/file") // API endpoint
+            .url("http://EpiLogger.com/api/file") // API endpoint
             .post(requestBody)
             .build()
 
