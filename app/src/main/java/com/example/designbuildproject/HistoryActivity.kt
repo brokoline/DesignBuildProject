@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.ViewSwitcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,12 +16,14 @@ import com.google.firebase.database.*
 
 class HistoryActivity : AppCompatActivity() {
 
+    private lateinit var viewSwitcher: ViewSwitcher
     private lateinit var recyclerView: RecyclerView
     private lateinit var uploadAdapter: UploadAdapter
     private lateinit var startDateInput: EditText
     private lateinit var endDateInput: EditText
     private lateinit var fetchLogsButton: Button
     private lateinit var backToDashboard: TextView
+    private lateinit var history_title:TextView
 
     private lateinit var auth: FirebaseAuth
     private var currentUser: FirebaseUser? = null
@@ -29,6 +32,7 @@ class HistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
 
+        viewSwitcher = findViewById(R.id.viewSwitcher)
         startDateInput = findViewById(R.id.startDate)
         endDateInput = findViewById(R.id.endDate)
         fetchLogsButton = findViewById(R.id.fetchLogsButton)
@@ -43,13 +47,17 @@ class HistoryActivity : AppCompatActivity() {
         currentUser = auth.currentUser
 
         fetchLogsButton.setOnClickListener {
-            val startDate = startDateInput.text.toString()
-            val endDate = endDateInput.text.toString()
-
-            if (startDate.isNotEmpty() && endDate.isNotEmpty()) {
-                fetchLogs(startDate, endDate)
+            if (viewSwitcher.currentView.id == R.id.datePickerContainer) {
+                val startDate = startDateInput.text.toString()
+                val endDate = endDateInput.text.toString()
+                if (startDate.isNotEmpty() && endDate.isNotEmpty()) {
+                    fetchLogs(startDate, endDate)
+                } else {
+                    Toast.makeText(this, "Please select both start and end dates", Toast.LENGTH_SHORT).show()
+                }
             } else {
-                Toast.makeText(this, "Please select both start and end dates", Toast.LENGTH_SHORT).show()
+                viewSwitcher.showPrevious()
+                fetchLogsButton.setText(R.string.fetch_logs_button)
             }
         }
 
@@ -63,7 +71,7 @@ class HistoryActivity : AppCompatActivity() {
             val uid = user.uid
             val databaseReference = FirebaseDatabase.getInstance().getReference("users/$uid/uploads")
 
-            databaseReference.orderByChild("dateTime").startAt(startDate).endAt(endDate).addListenerForSingleValueEvent(object : ValueEventListener {
+            databaseReference.orderByChild("date").startAt(startDate).endAt(endDate).addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val uploadList = ArrayList<UploadActivity.UploadData>()
                     for (dataSnapshot in snapshot.children) {
@@ -71,8 +79,9 @@ class HistoryActivity : AppCompatActivity() {
                         uploadData?.let { uploadList.add(it) }
                     }
                     if (uploadList.isNotEmpty()) {
-                        uploadAdapter = UploadAdapter(uploadList)
-                        recyclerView.adapter = uploadAdapter
+                        uploadAdapter.updateList(uploadList)
+                        viewSwitcher.showNext()
+                        fetchLogsButton.setText(R.string.back_to_date_selection)
                     } else {
                         Toast.makeText(this@HistoryActivity, "No logs found for the specified date range", Toast.LENGTH_SHORT).show()
                     }
